@@ -1,4 +1,4 @@
-package mysecrets
+package retrievesecrets
 
 import (
 	"context"
