@@ -1,4 +1,4 @@
-module v2
+module github.com/tyler180/retrieve-secret/retrievesecrets
 
 go 1.23.4
 
