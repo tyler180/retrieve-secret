@@ -72,6 +72,20 @@ func RetrieveSecret(ctx context.Context, secretName, secretType, keyName string)
 			return nil, fmt.Errorf("failed to parse JSON secret: %w", err)
 		}
 
+		// If keyName is empty, return all key-value pairs
+		if keyName == "" {
+			result := make(map[string]string)
+			for k, v := range data {
+				strVal, ok := v.(string)
+				if ok {
+					result[k] = strVal
+				} else {
+					continue
+				}
+			}
+			return result, nil
+		}
+
 		val, ok := data[keyName]
 		if !ok {
 			return nil, fmt.Errorf("key %q not found in JSON secret", keyName)
