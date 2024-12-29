@@ -31,3 +31,4 @@ go.work.sum
 .terraform.*
 *.tfstate
 *.backup
+*.bak
